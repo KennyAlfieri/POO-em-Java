@@ -8,10 +8,10 @@ public class BilheteUnico {
     String nome;
     double saldo;
     final static double tarifaBase = 5.40;
-    char tipoTarifa;
+    String tipoTarifa;
 
 
-    public BilheteUnico(String nome, char tipoTarifa){
+    public BilheteUnico(String nome, String tipoTarifa){
         Random r = new Random();
         this.nome = nome;
         this.numBilhete = r.nextInt(1000,9999);
@@ -23,24 +23,26 @@ public class BilheteUnico {
         if (valor <= 0){
             return;
         }
+
+        System.out.println("Carregado com sucesso!");
+
         this.saldo += valor;
     }
 
-    public void passagemCatraca(){
-        if ((tipoTarifa == 'E' || tipoTarifa == 'P')){
-            saldo-=tarifaBase/2;
-
-        } else if (tipoTarifa == 'N') {
-            saldo-=tarifaBase;
-
-        }else {
-            System.out.println("Escolha uma tarifa correta, (E) estudante, (P) professor e (N) normal: ");
+    public boolean passagemCatraca(){
+        double valor = tarifaBase;
+        if(tipoTarifa.equalsIgnoreCase("estudante") ||
+                tipoTarifa.equalsIgnoreCase("professor")) {
+            valor = valor / 2;
         }
 
-        if (saldo > tarifaBase/2){
-            System.out.println("Passou! " + saldo);
-        }else{
-            System.out.println("Não passou! " + saldo);
+        // verifica se tem saldo disponível
+        if(saldo < valor) {
+            return false;
+        } else {
+            saldo -= valor;
+            return true;
         }
+
     }
 }
