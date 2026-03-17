@@ -3,46 +3,46 @@ package AULA05_exercicio03;
 import java.util.Random;
 
 public class BilheteUnico {
-
-    int  numBilhete;
-    String nome;
+    int numero;
     double saldo;
+    Usuario usuario;
     final static double tarifaBase = 5.40;
-    String tipoTarifa;
 
-
-    public BilheteUnico(String nome, String tipoTarifa){
-        Random r = new Random();
-        this.nome = nome;
-        this.numBilhete = r.nextInt(1000,9999);
-        this.tipoTarifa = tipoTarifa;
+    public BilheteUnico(Usuario usuario) {
+        Random random = new Random();
         this.saldo = 0;
+        this.numero = random.nextInt(1000, 9999);
+        this.usuario = usuario;
     }
 
-    public void carregar(double valor){
-        if (valor <= 0){
+    public void carregar(double valor) {
+        if(valor <= 0) {
             return;
         }
-
-        System.out.println("Carregado com sucesso!");
-
-        this.saldo += valor;
+        saldo += valor;
     }
 
-    public boolean passagemCatraca(){
+    public double calcularTarifa(){
         double valor = tarifaBase;
-        if(tipoTarifa.equalsIgnoreCase("estudante") ||
-                tipoTarifa.equalsIgnoreCase("professor")) {
-            valor = valor / 2;
+        if (usuario.tipoTarifa.equalsIgnoreCase("Estudante")
+                || usuario.tipoTarifa.equalsIgnoreCase("Professor") ){
+            valor = tarifaBase/ 2;
+        }
+        return valor;
+    }
+
+    public boolean passarNaCatraca() {
+        double valor = calcularTarifa();
+
+        if (valor <= saldo){
+          saldo -= valor;
+            return true;
+        }else {
+            return false;
         }
 
-        // verifica se tem saldo disponível
-        if(saldo < valor) {
-            return false;
-        } else {
-            saldo -= valor;
-            return true;
-        }
+
 
     }
+
 }
