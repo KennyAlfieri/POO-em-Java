@@ -5,8 +5,9 @@ import java.util.Scanner;
 public class Main {
     static Veiculo[] veiculos = new Veiculo[5];
     static Scanner sc = new Scanner(System.in);
-    static int index;
+    static int indexVeiculos;
     static Registro[] registro = new Registro[20];
+    static int indexRegistro;
 
     public static void main(String[] args) {
         int opcao;
@@ -24,7 +25,7 @@ public class Main {
             switch (opcao){
                 case 1 -> entrada();
 //                case 2 -> saida();
-                case 3 -> relatorio();
+                case 3 -> estacionados();
 //            case 4 -> receita();
                 case 5 -> System.out.println("Até logo!");
                 default -> System.out.println("Valor invalido!");
@@ -32,8 +33,11 @@ public class Main {
         } while (opcao != 5);
     }
 
-    private static void relatorio() {
+    private static void estacionados() {
 
+        for (int i = 0; i < indexRegistro; i++) {
+            System.out.println(registro[i].veiculo.placa);
+        }
     }
 
 
@@ -58,12 +62,12 @@ public class Main {
             System.out.println("Modelo --> ");
             modelo = sc.next();
             Proprietario proprietario = new Proprietario(nome, cpf);
-            veiculos[index++] = new Veiculo(marca, modelo, placa, proprietario);
+            veiculos[indexVeiculos++] = new Veiculo(marca, modelo, placa, proprietario);
         }else {
             System.out.println("Hora de entrada (hh:mm) -->");
             horaEntrada = sc.next();
-            registro[index] = new Registro(veiculoEntrado, horaEntrada);
-            index++;
+            registro[indexRegistro] = new Registro(veiculoEntrado, horaEntrada);
+            indexRegistro++;
         }
     }
 
@@ -71,7 +75,7 @@ public class Main {
         String placa;
         System.out.print("Qual placa da buscar? -> ");
         placa = sc.next().toUpperCase();
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < indexVeiculos; i++) {
             if (veiculos[i].placa.equalsIgnoreCase(placa)){
                 return veiculos[i];
             }
