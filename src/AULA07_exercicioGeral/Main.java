@@ -48,9 +48,9 @@ public class Main {
         long cpf;
         String horaEntrada;
 
-        Veiculo veiculoEntrado = pesquisar();
+        Veiculo veiculoEncontrado = pesquisar();
 
-        if (veiculoEntrado == null){
+        if (veiculoEncontrado == null){
             System.out.println("Nome do proprietario: ");
             nome =sc.next();
             System.out.println("CPF do proprietario: ");
@@ -63,10 +63,12 @@ public class Main {
             modelo = sc.next();
             Proprietario proprietario = new Proprietario(nome, cpf);
             veiculos[indexVeiculos++] = new Veiculo(marca, modelo, placa, proprietario);
+            veiculoEncontrado= veiculos[indexVeiculos];
+            indexVeiculos++;
         }else {
             System.out.println("Hora de entrada (hh:mm) -->");
             horaEntrada = sc.next();
-            registro[indexRegistro] = new Registro(veiculoEntrado, horaEntrada);
+            registro[indexRegistro] = new Registro(veiculoEncontrado, horaEntrada);
             indexRegistro++;
         }
     }
