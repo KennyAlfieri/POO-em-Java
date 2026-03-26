@@ -24,13 +24,22 @@ public class Main {
 
             switch (opcao){
                 case 1 -> entrada();
-//                case 2 -> saida();
+                case 2 -> saida();
                 case 3 -> estacionados();
-//            case 4 -> receita();
+                case 4 -> imprimirReceita();
                 case 5 -> System.out.println("Até logo!");
                 default -> System.out.println("Valor invalido!");
             }
         } while (opcao != 5);
+    }
+    private static void imprimirReceita(){
+        double valor=0;
+        for(int i=0; i<indexRegistro; i++){
+            if(registro[i].fimStr != null){
+                valor +=registro[i].calcularValor();
+            }
+        }
+        System.out.println("Receita total R$ "+valor);
     }
     private static void saida(){
         String horaSaida;
