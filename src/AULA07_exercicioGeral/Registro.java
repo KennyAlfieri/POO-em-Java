@@ -14,10 +14,14 @@ public class Registro {
 
 
     }
-    public long calcularValor(){
+    public double calcularValor(){
+       long minutos;
+       double valor;
         LocalTime inicio = LocalTime.parse(inicioStr);
         LocalTime fim = LocalTime.parse(fimStr);
-        return Duration.between(inicio, fim).toMinutes();
+       minutos = Duration.between(inicio, fim).toMinutes();
+       valor=minutos * 0.75;
+       return valor;
 
     }
 
