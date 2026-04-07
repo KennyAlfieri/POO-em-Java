@@ -1,5 +1,6 @@
 package AULA07_exercicioGeral;
 
+
 import java.util.Scanner;
 
 public class Main {
@@ -26,39 +27,49 @@ public class Main {
                 case 1 -> entrada();
                 case 2 -> saida();
                 case 3 -> estacionados();
-                case 4 -> imprimirReceita();
+                case 4 -> receita();
                 case 5 -> System.out.println("Até logo!");
                 default -> System.out.println("Valor invalido!");
             }
+            System.out.println();
         } while (opcao != 5);
     }
-    private static void imprimirReceita(){
-        double valor=0;
-        for(int i=0; i<indexRegistro; i++){
-            if(registro[i].fimStr != null){
-                valor +=registro[i].calcularValor();
+
+    private static void receita() {
+        double valor = 0;
+
+        for (int i = 0; i < indexRegistro; i++) {
+            if (registro[i].horaSaida != null){
+                valor += registro[i].calcularValor();
             }
         }
-        System.out.println("Receita total R$ "+valor);
+        System.out.println("Receita total --> R$" + valor);
+
     }
-    private static void saida(){
+
+    private static void saida() {
+
+        Registro registroEncontrado = pesquisarRegistro();
+
         String horaSaida;
         double valor;
-        Registro registro = pesquisarRegistro();
-        if(registro != null){
-            System.out.println("Hora de saída (hh:mm)--> ");
+
+        if (registroEncontrado != null){
+            System.out.println("Digite a hora de saida (hh:mm) -->");
             horaSaida = sc.next();
-            registro.fimStr=horaSaida;
-            valor = registro.calcularValor();
-            System.out.println("Valor total a pagar R$ "+valor);
+            registroEncontrado.horaSaida = horaSaida;
+            valor = registroEncontrado.calcularValor();
+            System.out.println("Valor a pagar é de --> R$ " + valor);
         }
+
     }
+
     private static Registro pesquisarRegistro(){
         String placa;
         System.out.print("Qual placa da buscar? -> ");
         placa = sc.next().toUpperCase();
         for (int i = 0; i < indexRegistro; i++) {
-            if(registro[i].veiculo.placa.equals(placa)){
+            if (registro[i].veiculo.placa.equalsIgnoreCase(placa)){
                 return registro[i];
             }
         }
@@ -70,10 +81,10 @@ public class Main {
     private static void estacionados() {
 
         for (int i = 0; i < indexRegistro; i++) {
-            if(registro[i].fimStr==null){
-
-            System.out.println(registro[i].veiculo.placa);
+            if (registro[i].horaSaida == null){
+                System.out.println(registro[i].veiculo.placa);
             }
+
         }
     }
 
@@ -99,14 +110,14 @@ public class Main {
             System.out.println("Modelo --> ");
             modelo = sc.next();
             Proprietario proprietario = new Proprietario(nome, cpf);
-           veiculoEncontrado = new Veiculo(marca, modelo, placa, proprietario);
-            veiculos[indexVeiculos]=veiculoEncontrado ;
+            veiculoEncontrado = new Veiculo(marca, modelo, placa, proprietario);
+            veiculos[indexVeiculos] = veiculoEncontrado;
             indexVeiculos++;
         }
-            System.out.println("Hora de entrada (hh:mm) -->");
-            horaEntrada = sc.next();
-            registro[indexRegistro] = new Registro(veiculoEncontrado, horaEntrada);
-            indexRegistro++;
+        System.out.println("Hora de entrada (hh:mm) -->");
+        horaEntrada = sc.next();
+        registro[indexRegistro] = new Registro(veiculoEncontrado, horaEntrada);
+        indexRegistro++;
 
     }
 
