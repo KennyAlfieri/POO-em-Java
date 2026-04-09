@@ -20,4 +20,22 @@ public class Navio {
     public Carga[] getCarga() {
         return carga;
     }
+    public boolean permitindoReservar(double peso){
+        double total =0;
+        for (int i = 0; i <index; i++) {
+            total += carga[i].getPeso();
+        }
+        return (total+peso)<=capacidade;
+    }
+
+    public boolean reservar(Carga carga){
+        if(index< this.carga.length){
+            if(permitindoReservar(carga.getPeso())){
+                this.carga[index]=carga;
+                index++;
+                return true;
+            }
+        }
+        return false;
+    }
 }
