@@ -20,6 +20,7 @@ public class Navio {
     public Carga[] getCarga() {
         return carga;
     }
+
     public boolean permitindoReservar(double peso){
         double total =0;
         for (int i = 0; i <index; i++) {
