@@ -39,4 +39,12 @@ public class Navio {
         }
         return false;
     }
+    public String getDados(){
+        String aux = "";
+        for (int i = 0; i < index; i++) {
+            aux += carga[i].getDados();
+            aux+= "############################ \n";
+        }
+        return aux;
+    }
 }

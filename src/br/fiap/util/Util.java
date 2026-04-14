@@ -31,6 +31,8 @@ public class Util {
                     case 1:
                         reservar();
                         break;
+                    case 3:
+                        exibir();
 
                     case 6:
                         showMessageDialog(null, "Até breve!");
@@ -52,5 +54,8 @@ public class Util {
         }else {
             showMessageDialog(null,"Problemas ao reservar");
         }
+    }
+    private  void exibir(){
+        showMessageDialog(null, navio.getDados());
     }
 }
