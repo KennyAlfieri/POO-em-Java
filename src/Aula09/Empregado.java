@@ -1,6 +1,6 @@
 package Aula09;
 
-public class Empregado extends Object{
+public abstract class  Empregado extends Object{
     long matricula;
     String nome;
 
@@ -8,8 +8,13 @@ public class Empregado extends Object{
         this.matricula = matricula;
         this.nome = nome;
     }
-    public double calcularSalario(){
+    public abstract double calcularSalario();
 
-        return 0;
+
+    public String toString() {
+        return "Empregado{" +
+                "matricula=" + matricula +
+                ", nome='" + nome + '\'' +
+                '}';
     }
 }
