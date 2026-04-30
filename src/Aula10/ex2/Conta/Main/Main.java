@@ -10,7 +10,12 @@ public class Main {
     public static void main(String[] args) {
 
         ArrayList<Conta> lista = new ArrayList<>();
-        lista.add(new Corrente(10,2000,6000));
-        lista.add(new Poupanca(10,2000,10));
+        lista.add(new Corrente(10,1000,6000));
+        lista.add(new Poupanca(20,3000,10));
+
+        for (Conta conta : lista){
+            conta.depositar(2000);
+            System.out.println(conta.getSaldo());
+        }
     }
 }

@@ -13,8 +13,8 @@ public class Conta {
     public double getSaldo() {
         return saldo;
     }
-    public void depositar(){
-        double valor=0;
+    public void depositar(double valor){
+
         saldo+=valor;
 
     }
