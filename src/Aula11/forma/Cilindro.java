@@ -1,9 +1,9 @@
-package Aula11;
+package Aula11.forma;
 
 
 import Aula11.ponto.Ponto;
 
-public class Cilindro extends Forma{
+public class Cilindro extends Forma implements Volume {
     private double raio;
     private double altura;
     private Ponto ponto;

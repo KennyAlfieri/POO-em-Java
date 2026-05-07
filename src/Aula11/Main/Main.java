@@ -1,8 +1,11 @@
-package Aula11;
+package Aula11.Main;
 
+import Aula11.forma.Cilindro;
+import Aula11.forma.Circulo;
+import Aula11.forma.Forma;
+import Aula11.forma.Volume;
 import Aula11.ponto.Ponto;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,6 +23,9 @@ public class Main {
             for (Forma forma : lista){
                 System.out.println(forma);
                 System.out.println("Área: " + forma.calcularArea());
+                if (forma instanceof Volume){
+                    System.out.println("Volume: " + ((Volume) forma).calcularVolume());
+                }
                 System.out.println();
         }
     }
