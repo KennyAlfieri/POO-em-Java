@@ -3,7 +3,7 @@ package Aula11;
 
 import Aula11.ponto.Ponto;
 
-public class Circulo {
+public class Circulo extends Forma {
     private double raio;
     private Ponto ponto;
 
@@ -19,12 +19,12 @@ public class Circulo {
     }
 
     @Override
-    public String toString() {
-        String aux = "";
-        aux += "Raio: " + raio + "\n";
-        aux += ponto.toString();
-        return aux;
-    }
+        public String toString() {
+            String aux = "";
+            aux += "Raio: " + raio + "\n";
+            aux += ponto.toString();
+            return aux;
+        }
 
     public double getRaio() {
         return raio;

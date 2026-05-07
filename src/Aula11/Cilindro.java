@@ -3,7 +3,7 @@ package Aula11;
 
 import Aula11.ponto.Ponto;
 
-public class Cilindro {
+public class Cilindro extends Forma{
     private double raio;
     private double altura;
     private Ponto ponto;
