@@ -19,7 +19,7 @@ public class PetShop {
                     try {
                         opcao = parseInt(showInputDialog(aux));
                     }catch (NumberFormatException e){
-                        showMessageDialog(null, "Irrou Pae, a opção deve ser um número inteiro entre 1 e 5. ");
+                        showMessageDialog(null, "Irrou Pae, a opção deve ser um número inteiro entre 1 e 5. " );
                     }
 
             } while (opcao != 5);
