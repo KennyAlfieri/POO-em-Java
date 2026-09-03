@@ -8,7 +8,7 @@ public class main {
     static void main() {
         List<Candidato> lista =  new ArrayList<>();
         lista.add(new Candidato("Patricia",9,30));
-        lista.add(new Candidato("SelminiDroid",7,30));
+        lista.add(new Candidato("SelminiDroid",7,60));
         lista.add(new Candidato ("Pedro",6,8));
         lista.add(new Candidato ("Carlos",8,7));
 
